@@ -1,3 +1,12 @@
-<div>
-    hello world!
-</div>
+{% extends 'base.html' %}
+{% block page %}
+    <div>
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab, aut autem debitis ex fuga, hic ipsa neque nesciunt nostrum numquam pariatur, placeat quae qui recusandae reprehenderit sunt velit! Distinctio, possimus.
+    </div>
+    <hr>
+    <h2>Оставьте отзыв</h2>
+    <form>
+        <input type="text">
+        <button type="button" class="btn btn-warning">Send</button>
+    </form>
+{% endblock %}

@@ -1,7 +1,6 @@
 from django.db import models
 # core/models.py
 
-
 class Bottle(models.Model):
     address = models.CharField(max_length=255)
     volume = models.IntegerField(default=10)

@@ -4,8 +4,7 @@ from .models import Bottle
 
 
 def contacts(request):
-    response = HttpResponse("<h1>Тел.: 348759283745234</h1>")
-    return response
+    return render(request, 'core/contacts.html')
 
 
 def about(request):

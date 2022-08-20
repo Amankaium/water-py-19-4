@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block page %}
+    {% for client in clients %}
+        <div>
+            {{ client.name }}
+            {% if client.photo %}
+                <br/>
+                <img height="100px" src="{{ client.photo.url }}">
+            {% endif %}
+        </div>
+    <hr>
+    {% endfor %}
+
+{% endblock %}
