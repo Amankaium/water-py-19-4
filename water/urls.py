@@ -16,7 +16,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from core.views import contacts, about, makers_list
-from clients.views import clients_list
+from clients.views import *
 from django.conf import settings
 from django.conf.urls.static import static
 
@@ -26,7 +26,10 @@ urlpatterns = [
     path('contacts/', contacts),
     path('about/', about),
     path('makers/', makers_list),
-    path('clients/', clients_list),
+    path('clients/', clients_list, name="client-list"),
+    path('client/<int:id>/', client_detail, name="client-detail"),
+    path('order/create/', create_order, name='create-order'),
+    path('order-form/', order_form_view)
 ]
 
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

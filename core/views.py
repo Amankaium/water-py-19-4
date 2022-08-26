@@ -18,3 +18,4 @@ def makers_list(request):
     context["bottles_list"] = bottles_list
     html_page = render(request, 'makers.html', context)
     return html_page
+
