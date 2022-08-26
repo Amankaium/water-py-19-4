@@ -2,7 +2,7 @@
 
 {% block page %}
 
-    <form action="/order-form/" method="POST">
+    <form method="POST">
         {% csrf_token %}
         <div><input name="name" type="text" placeholder="Ваше имя"></div>
         <div><input name="contacts" type="text"  placeholder="Контакты"></div>

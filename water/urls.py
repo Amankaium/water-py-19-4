@@ -28,8 +28,9 @@ urlpatterns = [
     path('makers/', makers_list),
     path('clients/', clients_list, name="client-list"),
     path('client/<int:id>/', client_detail, name="client-detail"),
+    path('client/update/<int:id>/', client_update, name="client-update"),
     path('order/create/', create_order, name='create-order'),
-    path('order-form/', order_form_view)
+    path('order/djangoform/', order_djangoform, name='order-djangoform'),
 ]
 
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
