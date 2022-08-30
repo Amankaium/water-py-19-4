@@ -53,3 +53,13 @@ def order_djangoform(request):
     return render(request, 'order_djangoform.html', context)
 
 
+def order_list(request):
+    return render(request, 'order_list.html', {"order_list": Order.objects.all()})
+
+
+def order_info(request, id):
+    return render(
+        request,
+        'order_info.html',
+        {'order_object': Order.objects.get(id=id)}
+    )

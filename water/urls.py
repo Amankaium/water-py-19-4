@@ -25,10 +25,12 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('contacts/', contacts),
     path('about/', about),
-    path('makers/', makers_list),
+    path('', makers_list),
     path('clients/', clients_list, name="client-list"),
     path('client/<int:id>/', client_detail, name="client-detail"),
     path('client/update/<int:id>/', client_update, name="client-update"),
+    path('orders', order_list, name='order-list'),
+    path('order/<int:id>/', order_info, name='order-info'),
     path('order/create/', create_order, name='create-order'),
     path('order/djangoform/', order_djangoform, name='order-djangoform'),
 ]

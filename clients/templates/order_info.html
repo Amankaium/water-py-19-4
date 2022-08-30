@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+
+{% block page %}
+    <div>
+        <div>Имя: {{ order_object.name }}</div>
+        <div>Контакты: {{ order_object.contacts }}</div>
+        <div>Клиент: {{ order_object.client.name }}</div>
+        <div>Логин: {{ order_object.client.user.username }}</div>
+    </div>
+{% endblock %}
