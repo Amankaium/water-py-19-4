@@ -1,10 +1,16 @@
 {% extends 'base.html' %}
+{% load bootstrap5 %}
+
+{% bootstrap_css %}
+{% bootstrap_javascript %}
+
+{% bootstrap_messages %}
 
 {% block page %}
     <h1>{{ our_number }}</h1>
     <form method="POST">
         {% csrf_token %}
-        {{ form.as_p }}
+        {% bootstrap_form form %}
         <button>Оформить заказ</button>
     </form>
 
