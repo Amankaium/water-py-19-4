@@ -15,7 +15,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from core.views import contacts, about, makers_list
+from core.views import *
 from clients.views import *
 from django.conf import settings
 from django.conf.urls.static import static
@@ -26,13 +26,14 @@ urlpatterns = [
     path('contacts/', contacts),
     path('about/', about),
     path('', makers_list),
-    path('clients/', clients_list, name="client-list"),
+    path('clients/', ClientListView.as_view(), name="client-list"),
     path('client/<int:id>/', client_detail, name="client-detail"),
     path('client/update/<int:id>/', client_update, name="client-update"),
-    path('orders', order_list, name='order-list'),
-    path('order/<int:id>/', order_info, name='order-info'),
-    path('order/create/', create_order, name='create-order'),
-    path('order/djangoform/', order_djangoform, name='order-djangoform'),
+    path('orders/', OrderListView.as_view(), name='order-list'),
+    path('order/<int:pk>/', OrderDetailView.as_view(), name='order-info'),
+    path('order/create/', CreateOrderView.as_view(), name='create-order'),
+    path('order/djangoform/', CreateOrderDjangoFormView.as_view(), name='order-djangoform'),
+    path('test/', MyView.as_view()),
 ]
 
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

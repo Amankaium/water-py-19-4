@@ -3,7 +3,7 @@
 {% block page %}
 
     <div>
-        {% for order in order_list %}
+        {% for order in object_list %}
             <div>
                 <a href="{% url 'order-info' order.id %}">
                     {{ order.name }}
