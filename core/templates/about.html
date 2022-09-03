@@ -1,5 +1,8 @@
 {% extends 'base.html' %}
 {% block page %}
+    <h2>Привет, {{ request.user }}!</h2>
+    <hr>
+
     <div>
         Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab, aut autem debitis ex fuga, hic ipsa neque nesciunt nostrum numquam pariatur, placeat quae qui recusandae reprehenderit sunt velit! Distinctio, possimus.
     </div>
@@ -9,4 +12,6 @@
         <input type="text">
         <button type="button" class="btn btn-warning">Send</button>
     </form>
+
+
 {% endblock %}

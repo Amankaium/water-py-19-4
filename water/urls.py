@@ -34,6 +34,8 @@ urlpatterns = [
     path('order/create/', CreateOrderView.as_view(), name='create-order'),
     path('order/djangoform/', CreateOrderDjangoFormView.as_view(), name='order-djangoform'),
     path('test/', MyView.as_view()),
+    path('signin/', LoginView.as_view(), name="sign-in"),
+
 ]
 
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
