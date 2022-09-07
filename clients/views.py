@@ -3,6 +3,7 @@ from .models import Client, Order
 from .forms import OrderForm, ClientForm
 from django.views import View
 from django.views.generic import ListView, DetailView, CreateView
+from django.contrib.auth.decorators import login_required
 
 
 # def clients_list(request):
@@ -10,19 +11,20 @@ from django.views.generic import ListView, DetailView, CreateView
 #     context["clients"] = Client.objects.all() # model
 #     return render(request, 'clients.html', context) # template
 
+@login_required
+def order_list(request):
+    context = {}
+    context["object_list"] = Order.objects.all()
+    return render(request, 'order_list.html', context)
 
-# def order_list(request):
-#     context = {}
-#     context["order_list"] = Order.objects.all()
-#     return render(request, 'order_list.html', context)
 class ClientListView(ListView):
     model = Client
     template_name = 'clients.html'
 
 
-class OrderListView(ListView):
-    model = Order
-    template_name = 'order_list.html'
+# class OrderListView(ListView):
+#     model = Order
+#     template_name = 'order_list.html'
 
 
 def client_detail(request, id):
@@ -98,8 +100,8 @@ class CreateOrderDjangoFormView(CreateView):
         return context
 
 
-def order_list(request):
-    return render(request, 'order_list.html', {"order_list": Order.objects.all()})
+# def order_list(request):
+#     return render(request, 'order_list.html', {"order_list": Order.objects.all()})
 
 
 # def order_info(request, id):
@@ -116,3 +118,15 @@ def order_list(request):
 class OrderDetailView(DetailView):
     model = Order
     template_name = "order_info.html"
+
+
+class ClientOrderList(DetailView):
+    template_name = 'order_list.html'
+    model = Order
+
+    def get(self, request, *args, **kwargs):
+        context = {}
+        pk = kwargs.get("pk")
+        client = Client.objects.get(id=kwargs.get("pk"))
+        context["object_list"] = Order.objects.filter(client=client)
+        return render(request, self.template_name, context)
