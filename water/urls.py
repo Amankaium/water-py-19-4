@@ -26,6 +26,7 @@ urlpatterns = [
     path('contacts/', contacts),
     path('about/', about),
     path('', makers_list),
+    path('clients-fbv/', clients_list),
     path('clients/', ClientListView.as_view(), name="client-list"),
     path('client/<int:id>/', client_detail, name="client-detail"),
     path('client/<int:pk>/order-list/', ClientOrderList.as_view(), name="client-order-list"),

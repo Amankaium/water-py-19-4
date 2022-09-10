@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% block page %}
+    <form method="get">
+        {{ filter.form.as_p }}
+        <input type="submit" />
+    </form>
+    <hr>
+    {% for client in filter.qs %}
+        <div>
+            <a href="/client/{{ client.id }}/">{{ client.name }}</a>
+            {% if client.photo %}
+                <br/>
+                <img height="100px" src="{{ client.photo.url }}">
+            {% endif %}
+        </div>
+    <hr>
+    {% endfor %}
+
+{% endblock %}

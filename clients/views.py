@@ -4,12 +4,16 @@ from .forms import OrderForm, ClientForm
 from django.views import View
 from django.views.generic import ListView, DetailView, CreateView
 from django.contrib.auth.decorators import login_required
+from .fitlers import ClientFilter
 
 
-# def clients_list(request):
-#     context = {}
-#     context["clients"] = Client.objects.all() # model
-#     return render(request, 'clients.html', context) # template
+def clients_list(request):
+    context = {}
+    # context["clients"] = Client.objects.all()
+    f = ClientFilter(request.GET, queryset=Client.objects.all())
+    context["filter"] = f
+    return render(request, 'clients_filtered.html', context)
+
 
 @login_required
 def order_list(request):
